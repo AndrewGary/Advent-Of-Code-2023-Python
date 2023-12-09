@@ -1,0 +1,22 @@
+
+My initial thoughts for this problem would be to create a matrix (list of lists) that represent each line in the input
+
+create a function that takes in a single character and returns true if the character is a symbol
+
+run this function over the input line by line character by character and if it returns true (is a symbol) then check the surrounding 8 spaces to see if they are numbers
+    So if you find a symbol at [5, 8] we would have to check for numbers in spaces [4, 8], [4, 7], [4, 9], [5, 7], [5, 9], [6, 7], [6, 8], [6, 9]
+
+if we find a number in any of these spaces we must check to see what the full number is, so we check the characters to the left and right of the index where the number was found,
+    we will do this until we hit a . both ways
+
+we will need to figure out a way to check and see if the spaces to the top, right, left, and bottom of the found symbol are '.' or numbers as well so that we can tell if there are any overlapping numbers
+
+============EX============
+|                        |  In this we have a symbol at [2, 7] so we check to see if [1, 6] is a number -> YES is is a number so we set 
+|     ...123.456...      |
+|     ......*......      |
+|     .............      |
+|     234..55......      |
+|                        |
+==========================
+
