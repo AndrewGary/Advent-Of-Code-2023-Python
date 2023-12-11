@@ -2,49 +2,69 @@ file = open('./input.txt')
 
 lines = file.readlines()
 
-# print(lines)
+total = 0
 
-# siteExampleInpute = 'Card 1: 41 48 83 86 17 | 83 86  6 31 17  9 48 53\r\nCard 2: 13 32 20 16 61 | 61 30 68 82 17 32 24 19\r\nCard 3:  1 21 53 59 44 | 69 82 63 72 16 21 14  1\r\nCard 4: 41 92 73 84 69 | 59 84 76 51 58  5 54 83\r\nCard 5: 87 83 26 28 32 | 88 30 70 12 93 22 82 36\r\nCard 6: 31 18 13 56 72 | 74 77 10 23 35 67 36 11'
+for i, line in enumerate(lines):
 
-siteExampleInpute = 'Card 3:  1 21 53 59 44 | 69 82 63 72 16 21 14  1'
+    l = line
+    score = 0
+    semi = l.find(':')
 
+    semi = semi + 1
+    l = l[semi:].strip().split(' | ')
 
-idk = siteExampleInpute.split('\r\n')
-answer = 0
+    # print(l)
 
-for line in [line[10:].strip().split(' | ') for line in idk]:
-# for line in [line[10:].strip().split(' | ') for line in lines]:
+    winners = l[0].replace('  ', ' ').split(' ')
+    nums = l[1].replace('  ', ' ').split(' ')
 
-    lineScore = 0
-    winningNumbers = line[0].split()
-    # losingNumber = line[1].split()
-    
-    for wNum in winningNumbers:
-        print('************')
-        if(wNum == 1):
-            print('winNum: ' + str(wNum))
-            
-        continue
-        if(line[1].find(wNum) != -1):
-            print(wNum)
-            if(lineScore == 0):
-                print('adding 1 to linescore')
-                lineScore = lineScore + 1
+    # print(winners)
+    # print(nums)
+    # print(type(nums))
+
+    for win in winners:
+        if win in nums:
+            if(score == 0):
+                score = score + 1
             else:
-                print('multiplying linescore by 2')
-                lineScore = lineScore + lineScore
+                score = score * 2
 
-    answer = answer + lineScore
+    print('Line: ' + str(i) + ' --- Score: ' + str(score) )
+    total = total + score
 
-    # print(lineScore)
-
-print('answer: ' + str(answer))
-
-
-
-    # print(line)
-    # print(winningNumbers)
+print('Total: ' + str(total))    
 
 # for line in lines:
-#     line = line[10:]
-#     print(line)
+#     l = line
+
+#     semi = l.find(':')
+
+#     semi = semi + 1
+#     l = l[semi:].strip().split(' | ')
+
+#     winners = l[0].replace('  ', ' ').split(' ')
+#     nums = l[1]
+
+#     print(winners)
+#     print(nums)
+
+#     for win in winners:
+#         find = nums.find(win)
+#         print(find)
+
+#     score = 0
+#     1111        
+#     for num in nums:
+#         for wnum in win:
+#             if(num == wnum):
+#                 if(score == 0):
+#                     score = score + 1
+#                 else:
+#                     score = score * 2
+
+#     print('adding ' + str(score) + ' to total')
+#     total = total + score
+#     print('new Total: ' + str(total))
+
+# print(total)
+# print(len(lines))
